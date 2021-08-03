@@ -1,11 +1,18 @@
 import asyncio
 
+from app.remediation.aws.cloudtrail import (no_global_services_logging,
+                                            no_log_file_validation, no_logging,
+                                            not_configured)
+from app.remediation.aws.cloudtrail.aio import \
+    no_global_services_logging as aio_no_global_services_logging
+from app.remediation.aws.cloudtrail.aio import \
+    no_log_file_validation as aio_no_log_file_validation
+from app.remediation.aws.cloudtrail.aio import no_logging as aio_no_logging
+from app.remediation.aws.cloudtrail.aio import \
+    not_configured as aio_not_configured
+
 
 def cloudtrail_rules():
-    from app.remediation.aws.cloudtrail import no_global_services_logging  # pylint: disable=C
-    from app.remediation.aws.cloudtrail import no_log_file_validation  # pylint: disable=C
-    from app.remediation.aws.cloudtrail import not_configured  # pylint: disable=C
-    from app.remediation.aws.cloudtrail import no_logging  # pylint: disable=C
 
     print(no_global_services_logging.apply('test-trail', region='ap-south-1'))
     print(no_log_file_validation.apply('test-trail', region='ap-south-1'))
@@ -19,25 +26,22 @@ def cloudtrail_rules():
 
 
 def async_cloudtrail_rules():
-    from app.remediation.aws.cloudtrail.aio import no_global_services_logging  # pylint: disable=C
-    from app.remediation.aws.cloudtrail.aio import no_log_file_validation  # pylint: disable=C
-    from app.remediation.aws.cloudtrail.aio import not_configured  # pylint: disable=C
-    from app.remediation.aws.cloudtrail.aio import no_logging  # pylint: disable=C
     loop = asyncio.get_event_loop()
 
     print(
         loop.run_until_complete(
-            no_global_services_logging.apply('test-trail',
-                                             region='ap-south-1')))
+            aio_no_global_services_logging.apply('test-trail',
+                                                 region='ap-south-1')))
     print(
         loop.run_until_complete(
-            no_log_file_validation.apply('test-trail', region='ap-south-1')))
+            aio_no_log_file_validation.apply('test-trail',
+                                             region='ap-south-1')))
 
     print(
         loop.run_until_complete(
-            not_configured.apply('phani-trail',
-                                 'phani-cloudtrail-bucket',
-                                 region='ap-south-1')))
+            aio_not_configured.apply('phani-trail',
+                                     'phani-cloudtrail-bucket',
+                                     region='ap-south-1')))
     print(
         loop.run_until_complete(
-            no_logging.apply('test-trail', region='ap-south-1')))
+            aio_no_logging.apply('test-trail', region='ap-south-1')))
