@@ -1,0 +1,6 @@
+mkdir -p ./.venv
+python3 -m venv ./.venv > /dev/null || python -m venv ./.venv > /dev/null
+.venv/Scripts/activate && \
+pip install --requirement requirements.txt && \
+pip install --requirement dev_requirements.txt && \
+./dev-scripts/enable-git-hooks

@@ -1,0 +1,7 @@
+if [ "$#" -eq 1 ]; then
+    echo $1 >> requirements.txt
+fi
+.venv/Scripts/activate && \
+pip install --requirement requirements.txt && \
+pip install --requirement dev_requirements.txt && \
+./dev-scripts/enable-git-hooks
