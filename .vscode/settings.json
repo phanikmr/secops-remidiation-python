@@ -13,6 +13,8 @@
   "python.linting.lintOnSave": true,
   "cSpell.words": [
     "aioboto",
-    "aiorule"
+    "aiorule",
+    "pylint",
+    "qrcode"
   ]
 }
