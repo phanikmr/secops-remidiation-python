@@ -1,4 +1,4 @@
-boto3==1.17.106
+boto3==1.18.58
 aioboto3==9.2.0
 qrcode
 pillow
