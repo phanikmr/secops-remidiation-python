@@ -3,5 +3,5 @@ isort[requirements_deprecated_finder]==5.9.2
 pyflakes==2.3.1
 pylint==2.8.2
 pylint-quotes==0.2.3
-yapf==0.31.0
+yapf==0.32.0
 boto3-stubs==1.18.10
